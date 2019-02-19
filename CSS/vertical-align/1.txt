@@ -1,0 +1,24 @@
+﻿一、vertical-align 有四大类属性值
+1、线类（baseline, top, middle, bottom）
+
+2、文本类（text-top, text-bottom）
+
+3、上标下标类（sub, super）
+
+4、数值百分比类（20px, 2em, 20%）
+
+二、vertical-align应用于inline水平以及'table-cell'元素
+
+inline水平
+ inline: <img>, <span>, <strong>, <em>...
+ inline-block: <input>(IE8+),<button>(IE8+)...
+
+'table-cell'元素
+ table-cell: <td>
+
+三、vertical-align与line-height
+1、vertical-align百分比是相对于line-height值计算的
+{
+  line-height: 20px;
+  vertical-align: 10%; // 相当于 2px
+}
