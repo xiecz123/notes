@@ -1,0 +1,18 @@
+AJAX的全称
+Asynchronous JavaScript and XML (异步额JavaScript和XML)
+
+XMLHttpRequest取得响应
+responseText：获得字符串形式的响应数据
+responseXML：获取XML形式的响应数据
+status和statusText：以数字和文本形式返回HTTP状态码
+getAllResponseHeader()：
+getResponseHeader()
+
+readyState属性  （通过 request.onreadystatechange 事件监听readyState的变化）
+为0的时候：请求未初始化，open还没有调用
+为1的时候：服务器连接已建立，open已经调用了
+为2的时候：请求已接受
+为3的时候：请求处理中
+为4的时候：请求已完成，且响应已就绪，也就是响应完成了
+
+
