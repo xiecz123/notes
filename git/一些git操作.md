@@ -1,20 +1,20 @@
-git init // 把当前目录变成 Git 可以管理的仓库
+`git init // 把当前目录变成 Git 可以管理的仓库`
 
-git branch -a // 查看分支
+`git branch -a // 查看分支`
 
-git log / git log --pretty=oneline // 查看 git 记录
+`git log / git log --pretty=oneline // 查看 git 记录`
 
-git reflog // 查看之前的命令
+`git reflog // 查看之前的命令`
 
-git reset --hard HEAD^ / git reset --hard <name> 退回到上一版本/退回到某一个版本
+`git reset --hard HEAD^ / git reset --hard <name> 退回到上一版本/退回到某一个版本`
 
-git diff HEAD -- 文件名 // 比较文件区别
+`git diff HEAD -- 文件名 // 比较文件区别`
 
-use "git restore --staged <file>..." to unstage
+`use "git restore --staged <file>..." to unstage`
 
-use "git restore <file>..." to discard changes in working directory
+`use "git restore <file>..." to discard changes in working directory`
 
-git rm <file>...
+`git rm <file>...`
 
 > 创建 dev 分支，然后切换到 dev 分支
 
@@ -65,16 +65,21 @@ $
 $
 ```
 
-git stash // 暂存工作区的内容
-git stash list // 查看暂存列表
-git stash apply / git stash apply stash@{0} // 把暂存区的内容恢复到工作区
-git stash drop // 删除暂存区内容
-git stash pop // 恢复并删除暂存区
+`git stash // 暂存工作区的内容`
 
-git remote // 查看远程库的信息
-git remote -v // 远程库更详细的信息
+`git stash list // 查看暂存列表`
 
-git push origin master // 推送分支
+`git stash apply / git stash apply stash@{0} // 把暂存区的内容恢复到工作区`
+
+`git stash drop // 删除暂存区内容`
+
+`git stash pop // 恢复并删除暂存区`
+
+`git remote // 查看远程库的信息`
+
+`git remote -v // 远程库更详细的信息`
+
+`git push origin master // 推送分支`
 
 > 如果你在创建.gitignore 文件之前就已经 push 项目了，那么即时你在.gitignore 文件中写入新的规则，这些规则也不会起作用。
 > 原因是.gitignore 只能忽略那些原来没有被 track 的文件，如果某些文件已经被纳入了版本管理中，则修改.gitignore 是无效的。
@@ -86,18 +91,24 @@ $ git add .
 $ git commit -m 'update .gitignore'
 ```
 
-…or create a new repository on the command line
-echo "# learngit" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/xiecz123/learngit.git
-git push -u origin main
+> create a new repository on the command line
 
-…or push an existing repository from the command line
-git remote add origin https://github.com/xiecz123/learngit.git //关联远程库
-git branch -M main // 更改分支名称为 main
-git push -u origin main
+```shell
+$ echo "# learngit" >> README.md
+$ git init
+$ git add README.md
+$ git commit -m "first commit"
+$ git branch -M main
+$ git remote add origin https://github.com/xiecz123/learngit.git
+$ git push -u origin main
+```
+
+> …or push an existing repository from the command line
+
+```shell
+$ git remote add origin https://github.com/xiecz123/learngit.git //关联远程库
+$ git branch -M main // 更改分支名称为 main
+$ git push -u origin main
+```
 
 > 由于远程库是空的，我们第一次推送 master 分支时，加上了-u 参数，Git 不但会把本地的 master 分支内容推送的远程新的 master 分支还会把本地的 master 分支和远程的 master 分支关联起来，在以后的推送或者拉取时就可以简化命令。
