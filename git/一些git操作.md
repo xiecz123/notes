@@ -55,16 +55,6 @@ $ git cherry-pick <commit>
 $ git branch --set-upstream-to=origin/dev dev
 ```
 
-```shell
-#
-$
-```
-
-```shell
-#
-$
-```
-
 `git stash // 暂存工作区的内容`
 
 `git stash list // 查看暂存列表`
@@ -106,8 +96,10 @@ $ git push -u origin main
 > …or push an existing repository from the command line
 
 ```shell
-$ git remote add origin https://github.com/xiecz123/learngit.git //关联远程库
-$ git branch -M main // 更改分支名称为 main
+# 关联远程库
+$ git remote add origin https://github.com/xiecz123/learngit.git 
+# 更改分支名称为 main
+$ git branch -M main
 $ git push -u origin main
 ```
 
