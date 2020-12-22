@@ -16,6 +16,8 @@
 
 `git rm <file>...`
 
+`git fetch --tags -f` 更新远程 tags 到本地 tags
+
 > 创建 dev 分支，然后切换到 dev 分支
 
 1. 方法一
@@ -97,7 +99,7 @@ $ git push -u origin main
 
 ```shell
 # 关联远程库
-$ git remote add origin https://github.com/xiecz123/learngit.git 
+$ git remote add origin https://github.com/xiecz123/learngit.git
 # 更改分支名称为 main
 $ git branch -M main
 $ git push -u origin main
