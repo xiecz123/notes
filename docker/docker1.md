@@ -1,8 +1,10 @@
 [docker 学习](https://yeasy.gitbook.io/docker_practice/image)
 
 `docker --help` 可以查看具体指令
-Run 'docker COMMAND --help' for more information on a command.
-ex: docker run --help
+
+Run `docker COMMAND --help` for more information on a command.
+
+ex: docker build --help
 
 ### 一、使用镜像
 

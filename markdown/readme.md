@@ -36,6 +36,7 @@ function add(a, b) {
 3. list2
 
 - [ ] todo list
+- [x] done list
 
 @somebody
 

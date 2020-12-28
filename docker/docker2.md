@@ -1,7 +1,9 @@
 [docker 学习](https://yeasy.gitbook.io/docker_practice/container)
 
 `docker --help` 可以查看具体指令
-Run 'docker COMMAND --help' for more information on a command.
+
+Run `docker COMMAND --help` for more information on a command.
+
 ex: docker run --help
 
 > 容器是 Docker 又一核心概念。

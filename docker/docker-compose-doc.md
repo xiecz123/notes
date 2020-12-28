@@ -1,6 +1,6 @@
 [docker 学习](https://yeasy.gitbook.io/docker_practice/compose)
 
-执行 docker-compose [COMMAND] --help 或者 docker-compose help [COMMAND] 可以查看具体某个命令的使用格式。
+执行 `docker-compose [COMMAND] --help` 或者 `docker-compose help [COMMAND]` 可以查看具体某个命令的使用格式。
 
 ### Docker Compose
 
