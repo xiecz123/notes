@@ -83,3 +83,8 @@ _ 下划线
 . 英文句点
 ! 感叹号
 ```
+
+```diff
+- this.startNewLabelCreation(data)
++ isTrue && this.startNewLabelCreation(data)
+```

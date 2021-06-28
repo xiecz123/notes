@@ -1,0 +1,95 @@
+一、字符串新特性
+1、多行字符串
+2、字符串模板
+3、自动拆分字符串（平时几乎不用到，需要注意）
+
+二、参数类型
+（在参数名称后面使用冒号来指定参数的类型）
+（typescript有类型推断机制，可以使用 any 关键字来取消报错）
+any、string、number、boolean、void
+可以在变量、方法以及方法的参数中设置类型
+还有自定义参数类型
+
+默认参数
+（在参数声明后面用等号来指定参数的默认值）
+
+可选参数
+（在方法额参数声明后面用问号来标明此参数为可选参数）
+
+function test(a: string, b?: string, c: string = 'jojo') {}
+
+三、函数新特性
+1、Rest and Spread 操作符：
+ （用来声明任意数量的方法参数）
+function fun1（...args）{}
+
+function fun1（a, ,b, c）{}
+let arr = [1, 2, 3];
+func1(...arr)
+
+2、generator函数
+（控制函数的执行过程，手动暂停和恢复代码执行）
+
+3、destructuring析构表达式
+（通过表达式将对象或数组拆解成任意数量的变量）
+
+四、表达式与循环
+1、箭头表达式
+2、forEach（）， for in 和 for of
+
+for of 可以打断break；
+
+五、面向对象特性
+1、类（class）
+（类是TypeScript的核心，使用TypeScript开发时，大部分代码都是写在类里面的，
+这里会介绍类的定义，构造函数，以及类的继承）
+
+2、泛型（generic）
+（参数化的类型，一般用来限制集合的内容）
+let workers: Array<Person> = []
+
+3、接口（Interface）
+（用来建立某种代码约定，使得其他开发者在调用某个方法或创建新的类时必须遵循接口所定义的代码约定）
+第一种用法，一定要有这个属性，但也不能多属性
+interface IPerson {
+name: string;
+age: number;
+}
+
+class Person {
+ constructor(public config: IPerson){
+
+}
+}
+
+let p1 = new Person({
+name: "zhangsan",
+age: 18
+})
+
+第二种用法，一定要实现这个方法
+interface Animal{
+eat();
+}
+
+class Sheep implements Animal {
+eat() {
+  console.log(123)
+}
+}
+
+
+let p1 = new Person({
+name: "zhangsan",
+age: 18
+})
+4、模块（Moule）
+export，import
+
+
+5、注解（annotation）
+
+6、类型定义文件（*.d.ts）
+
+（github.com/DefinitelyTyped）
+

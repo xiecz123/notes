@@ -1,0 +1,97 @@
+一、类型语言之数据结构
+TS 数据结构包含原始类型、非原始类型、特殊类型和高级类型等几类。
+
+1.1 TS 中的原始数据类型
+number
+string
+boolean
+null
+undefined
+void
+symbol
+bigint
+
+
+然而，当你指定了--strictNullChecks标记，
+null和undefined只能赋值给void和它们各自。 这能避免很多常见的问题。
+
+1.2 非原始类型也称为是 object 类型
+
+在 TS 中有四种非原始类型，其中有一种代表非原始类型 object ，然后剩下的三种属于 object 类型。
+
+object
+array
+tuple (元组)
+enum （枚举）
+
+1.2.1 Interface
+
+interface Todo {
+  content: string;
+  user: string;
+  time: string;
+  isCompleted: boolean;
+}
+
+const todo: Todo = {
+ // ...
+}
+
+可选属性
+
+interface Todo {
+  content: string;
+  user: string;
+  time?: string;
+  isCompleted: boolean;
+}
+
+只读属性
+
+interface Todo {
+  content: string;
+  readonly user: string;
+  time?: string;
+  isCompleted: boolean;
+}
+
+多余属性检查
+
+interface Todo {
+  isCompleted: boolean;
+  [propName: string]: any;
+}
+
+1.2.2 Enum
+
+数字枚举
+字符串枚举
+异构枚举
+
+1.3 特殊类型
+
+any
+unknown
+never
+
+any 类型的变量是可以进行任意进行赋值、实例化、函数执行等操作，
+但是 unknown 只允许赋值，不允许实例化、函数执行等操作
+其中 never 类型一般会伴随着和函数的类型声明一起使用
+function responseError(message: string): never {
+  // ... 具体操作，接收信息，抛出错误
+}
+
+二 函数
+2.1 函数
+
+2.2 交叉类型、联合类型
+
+2.3 字面量类型与类型守卫
+
+
+没看懂的章节：
+1、接口-可索引的类型
+2、接口-类类型
+3、接口-继承接口中的 let square = <Square>{}; 这个语法是什么意思
+4、接口-混合类型的例子没看懂
+5、
