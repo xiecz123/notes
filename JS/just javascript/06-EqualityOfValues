@@ -1,0 +1,33 @@
+### Kinds of Equality
+
+Strict Equality: a === b (triple equals).
+Loose Equality: a == b (double equals).
+Same Value Equality: Object.is(a, b).
+
+#### Same Value Equality: Object.is(a, b)
+a和b是否指向同一个值，或者是同一个值。
+
+#### Strict Equality: a === b
+
+#### Same Value Equality vs Strict Equality
+
+这两种方法大多数情况下的表现是一样的，但是除了下面两种情况
+1、 NaN === NaN is false, although they are the same value.
+2、 -0 === 0 and 0 === -0 are true, although they are different values.
+
+#### First Special Case: NaN
+
+Instead, here’s a few ways (they all work!) to check if size is NaN:
+Number.isNaN(size)
+Object.is(size, NaN)
+size !== size
+
+#### Second Special Case: -0
+
+
+### Loose Equality
+
+宽松相等是一个糟糕的设计
+
+## Exercises
+

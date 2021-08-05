@@ -1,0 +1,122 @@
+在本模块中，我们将更深入地了解JavaScript世界以及其中的values。但在我们开始之前，我们得先解决房间里的问题。JavaScript世界是真的吗？
+
+
+## The JavaScript Simulation // 模拟JavaScript
+
+## Studying From the Outside
+
+## Studying From the Inside
+
+我们心智模型的基础是我们的世界充满values。
+每个值属于几个内置类型之一。
+其中一些是原始的，这使得这些类型的值是不可变的。
+变量是从代码中的名称指向值的“导线”。我们将继续建立在这个基础上。
+
+## Counting the Values
+
+// 区分值是理解JavaScript中相等的关键
+Distinguishing values from one another is key to understanding equality in JavaScript
+
+
+### Undefined
+
+在JavaScript中，它表示无意中丢失的值的概念。
+别太在意它的名字。人们很容易将undefined看作某种变量状态，例如“this variable is not defined”。
+但这完全是一种错误的想法！
+实际上，undefined是一个常规的原始值，如2或“hello”。
+
+
+### Null
+
+null is used for intentionally missing values.(null用于故意缺少值)
+typeof null // object
+是javascript历史遗留下来的错误
+
+
+### Booleans
+
+there are only two boolean values: true and false.
+
+### Numbers
+
+#### A Math for Computers (floating point math)
+
+#### Colors and Numbers
+JavaScript treats numbers as having a limited precision.(JavaScript将数字视为精度有限)
+幸运的是，任何介于Number.MIN_SAFE_INTEGER以及Number.MAX_SAFE_INTEGER的整数是准确的。
+
+#### Special Numbers
+值得注意的是，浮点数学包含一些特殊的数字。
+您可能偶尔会遇到NaN、Infinity、-Infinity和-0。
+它们的存在是因为有时您可能执行1/0之类的操作，而JavaScript需要以某种方式表示它们的结果。
+
+let scale = 0;
+let a = 1 / scale; // Infinity
+let b = 0 / scale; // NaN
+let c = -a; // -Infinity
+let d = 1 / c; // -0
+
+
+### BigInts
+
+Regular numbers can’t represent large integers with precision, so BigInts fill that gap (literally):
+填补了大整数的空缺
+
+### Strings
+
+#### Strings Aren’t Objects
+
+所有字符串都有一些内置属性。这并不意味着字符串就是对象！
+字符串属性是特殊的，其行为方式与对象属性不同。
+例如，不能为cat[0]分配任何内容。
+字符串是原语，所有原语都是不可变的。
+
+#### A Value for Every Conceivable String
+
+// Try it in your console
+let answer = prompt('Enter your name');
+console.log(answer); // ?
+
+
+### Symbols
+
+
+### Objects
+
+This includes arrays, dates, RegExps, and other non-primitive values:
+
+#### Making Our Own Objects
+
+#### Do Objects Disappear?
+
+JavaScript is a garbage-collected language.
+
+
+### Functions
+
+#### Functions Are Values
+
+#### Calling a Function
+
+
+## Recap
+
+Undefined: Only one value, undefined.
+Null: Only one value, null.
+Booleans: Two values: true and false.
+Numbers: One value for each floating point math number.
+BigInts: One value for every conceivable integer.
+Strings: One value for every conceivable string.
+Symbols: We skipped Symbols for now, but we’ll get to them someday!
+
+Objects: One value for every object literal we execute.
+Function: One value for every function expression we execute.
+
+
+It was fun to visit the different “celestial spheres” of JavaScript.
+Now that we’ve counted all the values, we’ve also learned what makes them distinct from one another. 
+For example, writing 2 or "hello" always “summons” the same number or a string value. 
+But writing {} or function() {} always creates a brand new, different value.
+This idea is crucial to understanding equality in JavaScript, which will be the topic of the next module
+
+# Exercises

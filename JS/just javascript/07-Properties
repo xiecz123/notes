@@ -1,0 +1,13 @@
+### Properties
+
+Importantly, properties don’t contain values — they point at them!（重要的是，属性不包含值-它们指向值！）
+
+#### Reading a Property
+
+##### Property Names
+
+属性区分大小写
+
+#### Assigning to a Property
+
+#### Missing Properties
