@@ -1,0 +1,42 @@
+一、CSS 背景位置 background-position属性：
+
+x% y%：表示使用百分比定位，是将图像本身（x%, y%）的那个点，与背景区域的（x%, y%）的那个点重合。
+最终得到背景图像起始位置坐标的计算公式为：
+
+x = (对象的宽度 - 图像的宽度) * x%;
+
+y = (对象的高度 - 图像的高度) * y%;
+
+二、echarts图形往往不是居中对齐的，比如设置center: ['50%','40%']属性，
+这是将图形的中心点与背景的（x%, y%）的那个点重合。这和背景图的定位方式不一致。
+
+
+解决一：使用js计算背景图的位置。
+
+通过document.getElementsByclassName()获得的数组
+let act = document.getElementsByclassName("active")
+for (let i = 0; i < act.length; i++) {
+ act[i].setAttribute("class", "")
+}
+通过这种方式删除act的class是有问题的，
+因为删除一个act的class之后，act这个数组也会随之改变。
+
+改成下面这种方式就可以了。
+
+for (let i = 0; i < act.length; i++) {
+ act[0].setAttribute("class", "")
+}
+
+
+
+通过webpack-dev-server代理跨域，后端传过来的cookie丢失。
+原因：后端返回的set-cookie字段里面有 Path=/xxx;
+这个Path=/xxx，限定了cookie的使用地址。
+解决一：使用nginx代理跨域， 配置proxy_cookie_path /XXX/ /;
+
+解决二：使用onProxyRes事件。具体可以看官方文档。
+
+
+
+Vue
+能访问到对象的key，但是访问不到key对应的value

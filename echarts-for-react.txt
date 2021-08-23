@@ -1,0 +1,88 @@
+阅读了三个版本的 echarts-for-react(1.1.2, 2.0.5, 2.0.15-beta.0)
+看到了功能上的不断完善，代码质量不断提高的过程。
+
+一、1.1.2版本是在github上最早的一个版本
+源代码只有一个echarts-for-react.js文件，全部代码只有71行，完成了一些基本功能，暴露了7个props
+（option，style，className，theme，onChartReady，showLoading，onEvents）。实现方式也比较朴实。
+
+对比其他两个版本，
+1、最致命的是绑定了resize方法，却没有在componentWillUnmount里面清除绑定。
+
+2、少了一些（try...catch...）可能引发奔溃。
+
+3、传入的onEvents没有判断key是否是hasOwnProperty，在2.0.5版本进行了改进。
+
+4、使用for循环将传入的onEvents对象中的事件和对应方法绑定到图表对象中。
+
+5、直接使用 ref='echartsDom' 设置了ref，这里我不知道是不是当时react版本写法的问题。
+
+6、let style = this.props.style || {height: '300px'}; 如果用户设置了style，就必须要设置height。
+在2.0.5版本中使用了扩展运算符   const newStyle = {height: 300,...style,}; 并且用const替换了let命令。
+
+7、props没有设置默认值。
+
+8、在componentWillUnmount中突然出现的this.refs.chart不知道是什么。
+
+
+
+二、2.0.5版本
+开始兼容echarts(v4.0)。
+源代码有index.js和core.jsx两个文件，暴露了11个props，
+在之前的基础上增加了（echarts，notMerge，lazyUpdate，loadingOption）。
+
+1、到了2.0.5版本最显著的区别是源代码多了一个文件，为什么这么做呢？
+因为之前是把echarts全量引入，这样打包出来的文件体积会大很多，所以需要按需引入的功能。
+现在增加了一个文件，既兼容了之前的用法（版本升级用户无感知），又符合按需引入的写法。
+在src/index.js中继承src/core.jsx的class。全量引入echarts并赋值给this.echartsInstance,这样之前的用户还是一样的体验。
+在src/core.jsx中使用props传入的基本echarts赋值给this.echartsInstance，
+按需引入的用户用这个路径'echarts-for-react/lib/core' 引入ReactEchartsCore。
+
+2、其中第22行，直接在componentDidUpdate之后绑定事件，
+在2.0.15-beta.0版本中进行了判断，onEvent改变之后需要重建（重新绑定事件）。
+
+3、const { style = {}, className } = this.props;  style设置了默认值，但是到了2.0.15-beta.0版本又把默认值删除了。
+
+4、ref={(e) => { this.echartsElement = e; }} 使用函数的形式获取 div element
+
+5、增加了外部传入的style和className改变时，调用了resize方法
+
+
+
+
+
+
+
+
+三、最新的2.0.15-beta.0版本
+暴露了13个props，
+在之前的基础上增加了（opts，shouldSetOption （这个props没有写在README.md中，还没开发完））。
+
+1、使用了作者自己写的size-sensor库。（DOM 元素尺寸监听器，当元素尺寸变化的时候，将会触发回调函数）
+2、使用了'fast-deep-equal' 的 isEqual 的方法。
+3、在constructor中：this.echartsLib = props.echarts; 用props替换了this.props
+4、
+
+
+
+
+
+总结：
+1、使用const声明常量，而不是let
+
+开发中遇到的问题：
+1、结构赋值失败
+解决方案：结构赋值可以指定默认值。默认值生效的条件是，对应的值严格等于undefined。具体请看es6入门。
+
+2、option应该传入一个方法，在数据更新的时候可以返回一个全新的对象，触发图表的重新渲染。
+直接传入option对象的话，修改option中的数据图表并不会更新。因为直接传对象的话，给ReactEcharts传入的option始终指向
+的是同一个地址，option对象内部的改变，ReactEcharts是感受不到的，也就无法进入componentDidUpdate方法。
+<ReactEcharts option={this.getOption()} />
+
+3、axios传参用data和params是不一样的，要明白这两个有什么区别。我现在看到的是用data传参，axios会把参数放入请求体中，
+用params传参，axios会把参数放入请求头中，也就是url中。。深入研究还需要看官方文档或者是源码只有1585行
+
+4、当前路由的models才会运行。
+
+5、直接打印formData对象，看到的是一个空对象，但其实里面是已经存放内容了。
+
+6、antd,upload组件的坑
