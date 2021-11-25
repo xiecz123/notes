@@ -1,0 +1,76 @@
+https://www.jianshu.com/p/d005c3e6cb51
+
+一、dva 默认所有 effect 为 takeEvery, 可以使用下面的写法实现 takeLatest 等
+const takeLatest = { type: 'takeLatest' };
+
+effects: {
+  addDelay: [
+          function*({ payload }, { call, put }) {
+            yield call(delay, 100);
+            yield put({ type: 'add', payload });
+          },
+          takeLatest,
+        ],
+}
+
+二、dva fetch catch 到的错误还是会侵入 effect 函数, 使用下面的函数阶段, 或者内部 throw ,在 effect 函数中 catch 处理
+if (response instanceof Error) {
+        return
+      }
+
+
+三、effect 函数中, yield 后一定要使用 effect 辅助函数(call,put,all,select等)
+这条我觉得不一定，
+
+四、同时执行多个 yield, 使用辅助函数 all
+ yield all([
+        put({
+          type: 'getListSuccess',
+          payload: response,
+        }),
+        put({
+          type: 'tableInfo/setPaginationInfo',
+          payload: {
+            tableName: payload.tableName,
+            paginationInfo: {
+              current: response.data.pageNum,
+              pageSize: response.data.pageSize,
+              total: response.data.total,
+            },
+          },
+        }),
+      ])
+
+五、同时执行多个 effects 并阻塞, 使用put.resolve
+ yield all([
+          put.resolve({
+            type: 'getTaxList',
+            payload,
+          }),
+          put.resolve({
+            type: 'getCaseList',
+            payload,
+          }),
+        ])
+
+
+select 可以获取其他modal的数据
+let a = yield select(({ situationModels }) => (situationModels.a))
+
+
+可以在一个model中调用另外一个model中的reducers方法：
+yield put({
+ type: 'user/save',
+ payload: {
+ }
+})
+
+
+
+可以直接调用reducers中的方法，比如save方法
+
+
+
+
+
+

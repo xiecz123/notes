@@ -1,0 +1,36 @@
+1、排序算法
+
+2、内存泄漏。 
+一、意外的全局变量 二、被遗忘的计时器 三、脱离DOM的引用 1、变量引用dom 2、子级dom不能释放，导致父级也不会被释放 四、闭包
+
+3、跨域问题
+4、安全问题
+5、MVVM
+6、异步组件原理
+7、深拷贝、比较两个对象是否相等
+8、reflect、map、proxy、object.definProperty
+9、decorator 装饰器原理
+10、浏览器缓存。缓存的位置、缓存的策略
+11、性能优化
+12、图片懒加载
+13、router，路由相关hash路由与history路由
+14、浏览器event loop与nodejs的event loop的区别
+15、diff原理
+16、hooks原理
+17、canvas优化。画1000个圈，更新一个圈的优化
+18、浏览器渲染原理。dom、cssom，script标签的defer和async属性。重绘与回流
+19、es6的引用与node引用的区别，amd与cmd的区别
+20、call与apply的区别，以及bind
+21、typeof null 的结果是 “object ” typeof NAN的结果是“number”
+22、0.1 + 0.2的精度问题
+23、react setState是否同步、及具体原理
+24、react有哪些生命周期
+25、有哪些循环以及哪些循环可以中断
+26、vue、react组件通信的方式有哪些
+27、异步编程有哪些方式
+28、https相关，keep alive 与多路复用
+29、webpack，优化打包体积，组件如何按需打包，如何提高打包速度
+30、js中的堆与堆栈，
+31、vue自定义指令
+32、按钮级别控制，使用过滤器
+33、promise实现原理
